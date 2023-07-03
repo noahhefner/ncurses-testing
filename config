@@ -1,0 +1,40 @@
+# Default config for tui-dm
+
+# Syntax: <option> <value>
+#   - No leading or trailing whitespace is allowed
+#   - Only one space between <option> and <value>
+#   - Blank lines are allowed
+#   - Comment lines must start with #
+
+# ------------------------------ screen ---------------------------------------
+#                    ^
+#                    |
+#                    | login_y
+#                    |
+#                    |
+#                    v <----- login_width -------->
+# <---- login_x -----> ----------------------------  ^
+#                      |                          |  |
+#                      |          Login           |  |
+#                      |                          |  |
+#                      |   Username:              |  |
+#                      |                          |  | login_height
+#                      |   Password:              |  |
+#                      |                          |  |
+#                      |   Session:               |  |
+#                      ----------------------------  v
+#
+#
+# ------------------------------ screen ---------------------------------------
+
+login_x 10
+login_y 10
+
+# Minimum width is 30
+login_width 30
+
+# Minimum height is 8
+login_height 8
+
+# 1 for options box on, 0 for options box off
+options_box 1

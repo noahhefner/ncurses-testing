@@ -4,6 +4,11 @@
 #include "draw.h"
 #include "config.h"
 
+void draw_options()
+{
+  draw_rectangle(0, 0, config.columns - 1, 2);
+}
+
 /*
  * Draw the login prompt.
  */

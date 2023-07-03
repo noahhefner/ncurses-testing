@@ -13,14 +13,16 @@ int main()
 
   bool run = true;
   int rows, cols, input;
-  load_config();
+
+  getmaxyx(stdscr, rows, cols);
+  init_config(rows, cols);
+  parse_config_file("config");
 
   while (run) {
-    getmaxyx(stdscr, rows, cols);
-
+    
     draw_login();
 
-    draw_rectangle(0, 0, cols - 1, 2);
+    if (config.draw_options == 1) draw_options();
 
     input = getch();
 
