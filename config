@@ -27,6 +27,11 @@
 #
 # ------------------------------ screen ---------------------------------------
 
+# Center the login box on the x axis
+login_center_x 1
+# Center the logib box on the y axis
+login_center_y 0
+
 login_x 10
 login_y 10
 

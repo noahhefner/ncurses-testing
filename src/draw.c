@@ -7,6 +7,13 @@
 void draw_options()
 {
   draw_rectangle(0, 0, config.columns - 1, 2);
+
+  char txt_shutdown[] = "F1 - Shutdown";
+  char txt_reboot[] = "F2 - Reboot";
+
+  mvaddstr(1, 3, txt_shutdown);
+  mvaddstr(1, 20, txt_reboot);
+
 }
 
 /*
@@ -19,10 +26,10 @@ void draw_login()
   char txt_pass[]    = "Password : ";
   char txt_session[] = "Session : ";
 
-  int y_login, y_user, y_pass, y_session, x_login, x_creds_session;
-
   // Draw rectangle around the login text
   draw_rectangle(config.login_y, config.login_x, config.login_width, config.login_height);
+
+  int y_login, y_user, y_pass, y_session, x_login, x_creds_session;
 
   // Calculate coordinates for login text
   y_login = config.login_y + (config.login_height / 2) - 3;
