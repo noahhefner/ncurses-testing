@@ -1,6 +1,10 @@
+#ifndef H_CONFIG
+#define H_CONFIG
+
 #include <stdint.h>
 
 void load_config();
+void parse_config_file(const char* config_path);
 
 struct config
 {
@@ -11,3 +15,5 @@ struct config
 };
 
 extern struct config config;
+
+#endif
