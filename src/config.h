@@ -5,6 +5,7 @@
 
 void init_config(int rows, int columns);
 void parse_config_file(const char* config_path);
+void validate_config();
 
 struct config
 {

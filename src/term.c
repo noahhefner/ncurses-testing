@@ -17,6 +17,7 @@ int main()
   getmaxyx(stdscr, rows, cols);
   init_config(rows, cols);
   parse_config_file("config");
+  validate_config();
 
   while (run) {
     
