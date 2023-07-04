@@ -5,21 +5,24 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "state.h"
 #include "config.h"
 
-void init_config(int rows, int columns)
+/*
+ * Initialize configuration values.
+ *
+ * Center the login box by default.
+ */
+void init_config()
 {
-  config.rows = rows;
-  config.columns = columns;
-  
-  config.login_x = -1;
-  config.login_y = -1;
-  config.login_width = -1;
-  config.login_height = -1;
+  config.login_width = 50;
+  config.login_height = 10;
 
-  config.login_center_x = -1;
-  config.login_center_y = -1;
+  config.login_x = (state.columns - config.login_width) / 2;
+  config.login_y = (state.rows - config.login_height) / 2;
 
+  config.login_center_x = 1;
+  config.login_center_y = 1;
 }
 
 /*
@@ -99,14 +102,41 @@ void parse_config_file(const char* config_path)
   fclose(config_file);
 }
 
+/*
+ * Validate the configuration settings.
+ */
 void validate_config()
 {
-  if (config.login_center_x == 1)
+  int min_login_width = 30;
+  int min_login_height = 8;
+
+  if (config.login_width < min_login_width)
   {
-    config.login_x = (config.columns - config.login_width) / 2;
+    config.login_width = min_login_width;
   }
-  if (config.login_center_y == 1)
+  
+  if (config.login_height < min_login_height)
   {
-    config.login_y = (config.rows - config.login_height) / 2;
+    config.login_height = min_login_height;
+  }
+  
+  if (config.login_x < 0 || config.login_x > (state.columns - config.login_width))
+  {
+    config.login_x = (state.columns - config.login_width);
+  }
+  
+  if (config.login_y < 0 || config.login_y > (state.rows - config.login_height))
+  {
+    config.login_y = state.rows - config.login_height;
+  }
+  
+  if (config.login_center_x != 0)
+  {
+    config.login_x = (state.columns - config.login_width) / 2;
+  }
+  
+  if (config.login_center_y != 0)
+  {
+    config.login_y = (state.rows - config.login_height) / 2;
   }
 }

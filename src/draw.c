@@ -3,10 +3,11 @@
 
 #include "draw.h"
 #include "config.h"
+#include "state.h"
 
 void draw_options()
 {
-  draw_rectangle(0, 0, config.columns - 1, 2);
+  draw_rectangle(0, 0, state.columns - 1, 2);
 
   char txt_shutdown[] = "F1 - Shutdown";
   char txt_reboot[] = "F2 - Reboot";
@@ -37,7 +38,7 @@ void draw_login()
   y_pass = y_login + 4;
   y_session = y_login + 6;
   x_login = config.login_x + (config.login_width / 2) - (strlen(txt_login) / 2);
-  x_creds_session = config.login_x + (config.login_width / 2) - 12;
+  x_creds_session = config.login_x + (config.login_width / 2) - 8;
 
   mvaddstr(y_login, x_login, txt_login);
   mvaddstr(y_user, x_creds_session, txt_user);
