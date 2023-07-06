@@ -42,6 +42,8 @@ int main()
 
     add_char = true;
 
+    draw_login();
+
     input = getch();
 
     //char *check = unctrl(input);
