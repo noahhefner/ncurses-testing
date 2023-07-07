@@ -21,28 +21,32 @@ bool cursor_on (struct text_field* tf) {
 
 void handle_text_field_event (struct text_field_event* tfe) {
 
-  //int cursor_y, cursor_x;
-  //getyx(stdscr, cursor_y, cursor_x);
+  int cursor_y, cursor_x;
+  getyx(stdscr, cursor_y, cursor_x);
 
   switch (tfe->keystroke) {
 
+    case KEY_LEFT:
+    {
+      if (cursor_x > tfe->tf->x) {
+        move(cursor_y, cursor_x -1);
+      }
+    }
     case KEY_BACKSPACE:
     case 127:
     case '\b': 
     {
-      if (strlen(tfe->tf->text) == 0) break;
+      if (tfe->tf->text_length == 0) break;
 
-      char* new_text = malloc(strlen(tfe->tf->text) - 1);
-      strncpy(new_text, tfe->tf->text, strlen(tfe->tf->text) - 1);
-      free(tfe->tf->text);
-      tfe->tf->text = new_text;
+      tfe->tf->text[tfe->tf->text_length - 1] = 0;
+      tfe->tf->text_length -= 1;
+      mvdelch(cursor_y, cursor_x - 1);
       break;
     }
     default:
     {
       tfe->tf->text[tfe->tf->text_length] = tfe->keystroke;
       tfe->tf->text_length += 1;
-      //move(cursor_y, cursor_x + 1);
       break;
     }
 

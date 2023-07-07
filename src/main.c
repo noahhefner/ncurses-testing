@@ -15,6 +15,7 @@ int main()
 {
   initscr();
   noecho();
+  keypad(stdscr, TRUE);
 
   bool run = true;
   int input;
@@ -35,29 +36,18 @@ int main()
 
   // Initialize username text field
   tf_username.text = (char*) calloc(max_username_length, sizeof(char));
-  //memset(tf_username.text, 0, max_username_length);
   tf_username.x = 0;
   tf_username.y = 10;
   tf_username.text_length = 0;
 
   // Initialize password text field
   tf_password.text = calloc(max_password_length, sizeof(char));
-  //memset(tf_password.text, 0, max_password_length);
   tf_password.x = 0;
   tf_password.y = 11;
   tf_password.text_length = 0;
 
-  //draw_login();
-
-  //if (config.draw_options == 1) draw_options();
-
-  //input_x = config.login_x + (config.login_width / 2) + 4;
-  //input_y = config.login_y + (config.login_height / 2) - 1;
-
   // Position cursor at user field
-  //move(10, 0);
-
-  //bool add_char = true;
+  move(10, 0);
 
   while (run) {
 
@@ -66,12 +56,37 @@ int main()
     draw_text_field(&tf_username);
     draw_text_field(&tf_password);
 
+    bool update_text_field = false;
+
+    int cursor_y, cursor_x;
+    getyx(stdscr, cursor_y, cursor_x);
+
     input = getch();
 
-    // This may be useful somewhere
-    //char *check = unctrl(input);
-    //int safe = (check != 0 && strlen(check) == 1);
+    switch (input) {
 
+      case KEY_LEFT:
+      {
+        mvcur(0, 0, cursor_y, cursor_x - 1);
+        //refresh();
+        break;
+      }
+      case KEY_RIGHT:
+      {
+        mvcur(0, 0, cursor_y, cursor_x + 1);
+        //refresh();
+        break;
+      }
+      default:
+      {
+        update_text_field = true;
+        break;
+      }
+    }
+
+    if (!update_text_field) continue;
+
+    
     // Process keystroke based on where the cursor is
     if (cursor_on(&tf_username)) {
 
@@ -88,20 +103,20 @@ int main()
       handle_text_field_event(&tfe);
 
     } else {
-      
+
       continue;
-    
+
     }
 
     if (input == 'q') {
-      
+
       run = false;
-    
+
     }
 
   }
 
   endwin();
-  
+
   return 0;
 }

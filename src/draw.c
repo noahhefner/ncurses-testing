@@ -12,8 +12,8 @@ void draw_text_field (struct text_field* tf) {
 
 }
 
-void draw_options()
-{
+void draw_options() {
+
   draw_rectangle(0, 0, state.columns - 1, 2);
 
   char txt_shutdown[] = "F1 - Shutdown";
