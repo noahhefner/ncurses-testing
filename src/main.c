@@ -34,16 +34,18 @@ int main()
   struct text_field tf_password;
 
   // Initialize username text field
-  tf_username.text = malloc(max_username_length);
-  memset(tf_username.text, 0, max_username_length);
+  tf_username.text = (char*) calloc(max_username_length, sizeof(char));
+  //memset(tf_username.text, 0, max_username_length);
   tf_username.x = 0;
   tf_username.y = 10;
+  tf_username.text_length = 0;
 
   // Initialize password text field
-  tf_password.text = malloc(max_password_length);
-  memset(tf_password.text, 0, max_password_length);
+  tf_password.text = calloc(max_password_length, sizeof(char));
+  //memset(tf_password.text, 0, max_password_length);
   tf_password.x = 0;
   tf_password.y = 11;
+  tf_password.text_length = 0;
 
   //draw_login();
 
@@ -64,8 +66,6 @@ int main()
     draw_text_field(&tf_username);
     draw_text_field(&tf_password);
 
-    move(10,0);
-
     input = getch();
 
     // This may be useful somewhere
@@ -74,28 +74,29 @@ int main()
 
     // Process keystroke based on where the cursor is
     if (cursor_on(&tf_username)) {
-      fprintf(stderr, "on username");
 
       struct text_field_event tfe;
-      tfe.tf = tf_username;
+      tfe.tf = &tf_username;
       tfe.keystroke = input;
-      handle_text_field_event(tfe);
+      handle_text_field_event(&tfe);
 
     } else if (cursor_on(&tf_password)) {
-      printf("On password");
+
       struct text_field_event tfe;
-      tfe.tf = tf_password;
+      tfe.tf = &tf_password;
       tfe.keystroke = input;
-      handle_text_field_event(tfe);
+      handle_text_field_event(&tfe);
 
     } else {
-      printf("not on text field");
+      
       continue;
     
     }
 
     if (input == 'q') {
+      
       run = false;
+    
     }
 
   }
