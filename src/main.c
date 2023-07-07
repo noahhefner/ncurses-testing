@@ -45,6 +45,8 @@ int main()
   tf_password.x = 0;
   tf_password.y = 11;
   tf_password.text_length = 0;
+  
+  int cursor_y, cursor_x;
 
   // Position cursor at user field
   move(10, 0);
@@ -53,12 +55,8 @@ int main()
 
     refresh();
 
-    draw_text_field(&tf_username);
-    draw_text_field(&tf_password);
-
     bool update_text_field = false;
 
-    int cursor_y, cursor_x;
     getyx(stdscr, cursor_y, cursor_x);
 
     input = getch();
@@ -67,14 +65,12 @@ int main()
 
       case KEY_LEFT:
       {
-        mvcur(0, 0, cursor_y, cursor_x - 1);
-        //refresh();
+        move(cursor_y, cursor_x - 1);
         break;
       }
       case KEY_RIGHT:
       {
-        mvcur(0, 0, cursor_y, cursor_x + 1);
-        //refresh();
+        move(cursor_y, cursor_x + 1);
         break;
       }
       default:
@@ -84,27 +80,32 @@ int main()
       }
     }
 
-    if (!update_text_field) continue;
+    if (update_text_field) {
 
-    
-    // Process keystroke based on where the cursor is
-    if (cursor_on(&tf_username)) {
+      // Process keystroke based on where the cursor is
+      if (cursor_on(&tf_username)) {
 
-      struct text_field_event tfe;
-      tfe.tf = &tf_username;
-      tfe.keystroke = input;
-      handle_text_field_event(&tfe);
+        struct text_field_event tfe;
+        tfe.tf = &tf_username;
+        tfe.keystroke = input;
+        handle_text_field_event(&tfe);
 
-    } else if (cursor_on(&tf_password)) {
+        draw_text_field(&tf_username);
 
-      struct text_field_event tfe;
-      tfe.tf = &tf_password;
-      tfe.keystroke = input;
-      handle_text_field_event(&tfe);
+      } else if (cursor_on(&tf_password)) {
 
-    } else {
+        struct text_field_event tfe;
+        tfe.tf = &tf_password;
+        tfe.keystroke = input;
+        handle_text_field_event(&tfe);
 
-      continue;
+        draw_text_field(&tf_password);
+
+      } else {
+
+        continue;
+
+      }
 
     }
 
