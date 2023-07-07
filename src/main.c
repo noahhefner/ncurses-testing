@@ -6,6 +6,7 @@
 #include "draw.h"
 #include "input.h"
 #include "config.h"
+#include "login_box.h"
 
 struct config config;
 struct state state;
@@ -18,18 +19,18 @@ int main()
   keypad(stdscr, TRUE);
 
   bool run = true;
-  int input;
+  int input, rows, cols;
 
   int max_username_length = 20;
   int max_password_length = 20;
 
-  //getmaxyx(stdscr, rows, cols);
-  //init_state(rows, cols);
+  getmaxyx(stdscr, rows, cols);
+  init_state(rows, cols);
 
   // Configuration settings
-  //init_config();
-  //parse_config_file("config");
-  //validate_config();
+  init_config();
+  parse_config_file("config");
+  validate_config();
 
   struct text_field tf_username;
   struct text_field tf_password;
@@ -45,11 +46,9 @@ int main()
   tf_password.x = 0;
   tf_password.y = 11;
   tf_password.text_length = 0;
-  
-  int cursor_y, cursor_x;
 
-  // Position cursor at user field
-  move(10, 0);
+  draw_login_box(&tf_username, &tf_password);
+  move(tf_username.y, tf_username.x);
 
   while (run) {
 
@@ -57,20 +56,30 @@ int main()
 
     bool update_text_field = false;
 
-    getyx(stdscr, cursor_y, cursor_x);
+    //getyx(stdscr, cursor_y, cursor_x);
 
     input = getch();
 
     switch (input) {
 
       case KEY_LEFT:
+      case KEY_RIGHT:
+      case KEY_UP:
+      case KEY_DOWN:
       {
-        move(cursor_y, cursor_x - 1);
         break;
       }
-      case KEY_RIGHT:
+      case KEY_STAB:
+      case '\t':
       {
-        move(cursor_y, cursor_x + 1);
+        // jump to next text box
+        break;
+      }
+      case KEY_ENTER:
+      case 10:
+      case '\r':
+      {
+        // login check
         break;
       }
       default:

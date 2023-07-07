@@ -26,12 +26,6 @@ void handle_text_field_event (struct text_field_event* tfe) {
 
   switch (tfe->keystroke) {
 
-    case KEY_LEFT:
-    {
-      if (cursor_x > tfe->tf->x) {
-        move(cursor_y, cursor_x -1);
-      }
-    }
     case KEY_BACKSPACE:
     case 127:
     case '\b': 
