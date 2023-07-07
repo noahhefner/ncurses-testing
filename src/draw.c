@@ -4,6 +4,13 @@
 #include "draw.h"
 #include "config.h"
 #include "state.h"
+#include "input.h"
+
+void draw_text_field (struct text_field* tf) {
+
+  mvaddstr(tf->y, tf->x, tf->text);
+
+}
 
 void draw_options()
 {
