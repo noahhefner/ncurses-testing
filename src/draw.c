@@ -2,10 +2,11 @@
 #include <string.h>
 
 #include "draw.h"
-#include "config.h"
-#include "state.h"
-#include "input.h"
+//#include "config.h"
+//#include "state.h"
+//#include "input.h"
 
+/*
 void draw_text_field (struct text_field* tf) {
 
   mvaddstr(tf->y, tf->x, tf->text);
@@ -24,9 +25,6 @@ void draw_options() {
 
 }
 
-/*
- * Draw the login prompt.
- */
 void draw_login()
 {
   char txt_login[]   = "Login";
@@ -52,7 +50,7 @@ void draw_login()
   mvaddstr(y_pass, x_creds_session, txt_pass);
   mvaddstr(y_session, x_creds_session, txt_session);
 }
-
+*/
 /*
  * Draw a rectangle.
  */
