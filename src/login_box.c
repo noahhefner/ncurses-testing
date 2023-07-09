@@ -1,6 +1,8 @@
 #include "draw.h"
 #include "login_box.h"
 
+#include <errno.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
 #include <form.h>
@@ -42,7 +44,7 @@ void init_login_box (int x, int y, int width, int height) {
   lb.coords_label_password = &coords_label_pass;
 
   // Field
-  FIELD* field[3];
+  FIELD* fields[2];
 
   // Calculate coordinates for fields
   int field_creds_x, field_user_y, field_pass_y;
@@ -51,21 +53,18 @@ void init_login_box (int x, int y, int width, int height) {
   field_pass_y = y_login + 4;
 
   // Username field
-  field[0] = new_field(1, 20, field_user_y, field_creds_x, 0, 0);
+  fields[0] = new_field(1, 20, field_user_y, field_creds_x, 0, 0);
   // Password field
-  field[1] = new_field(1, 20, field_pass_y, field_creds_x, 0, 0);
-
-  field[3] = NULL;
+  fields[1] = new_field(1, 20, field_pass_y, field_creds_x, 0, 0);
 
   // Set field options
-  set_field_back(field[0], A_UNDERLINE);
-  field_opts_off(field[0], O_AUTOSKIP);
-  set_field_back(field[1], A_UNDERLINE);
-  field_opts_off(field[1], O_AUTOSKIP);
+  set_field_back(fields[0], A_UNDERLINE);
+  field_opts_off(fields[0], O_AUTOSKIP);
+  set_field_back(fields[1], A_UNDERLINE);
+  field_opts_off(fields[1], O_AUTOSKIP);
 
   // Set form in login box struct
-  FORM* form = new_form(field);
-  lb.form = form;
+  lb.form = new_form(fields);
 
 }
 
@@ -75,19 +74,17 @@ void draw_login_box () {
   draw_rectangle(lb.y, lb.x, lb.width, lb.height);
 
   // Calculate coordinates for labels
-  int y_login, y_user, y_pass, y_session, x_login, x_creds_session;
+  int y_login, y_user, y_pass, x_login, x_creds;
   y_login = lb.y + (lb.height / 2) - 3;
   y_user = y_login + 2;
   y_pass = y_login + 4;
-  y_session = y_login + 6;
   x_login = lb.x + (lb.width / 2) - (strlen(txt_login) / 2);
-  x_creds_session = lb.x + (lb.width / 2) - 8;
+  x_creds = lb.x + (lb.width / 2) - 8;
 
   // Add labels
   mvaddstr(y_login, x_login, txt_login);
-  mvaddstr(y_user, x_creds_session, txt_user);
-  mvaddstr(y_pass, x_creds_session, txt_pass);
-  mvaddstr(y_session, x_creds_session, txt_session);
+  mvaddstr(y_user, x_creds, txt_user);
+  mvaddstr(y_pass, x_creds, txt_pass);
 
   post_form(lb.form);
 

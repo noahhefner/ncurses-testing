@@ -1,10 +1,12 @@
 #include <ncurses.h>
-#include <form.h>
 
 #include "login_box.h"
 
 int main () {
 
+  init_login_box(5, 5, 20, 8);
+  
+ 
   initscr();
   noecho();
   keypad(stdscr, TRUE);
@@ -14,13 +16,11 @@ int main () {
 
   //getmaxyx(stdscr, rows, cols);
 
-  init_login_box(20, 20, 40, 40);
-
-  draw_login_box();
-
-  refresh();
-
   while (run) {
+
+    draw_login_box();
+
+    refresh();
 
     input = getch();
 
