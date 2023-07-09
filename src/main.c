@@ -5,8 +5,7 @@
 int main () {
 
   init_login_box(5, 5, 20, 8);
-  
- 
+
   initscr();
   noecho();
   keypad(stdscr, TRUE);
@@ -32,6 +31,7 @@ int main () {
 
   }
 
+  free_login_box();
   endwin();
 
   return 0;

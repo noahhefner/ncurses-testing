@@ -1,0 +1,1102 @@
+==1177== Memcheck, a memory error detector
+==1177== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1177== Using Valgrind-3.21.0-d97fed7c3e-20230428 and LibVEX; rerun with -h for copyright info
+==1177== Command: ./form-test
+==1177== Parent PID: 540
+==1177== 
+--1177-- 
+--1177-- Valgrind options:
+--1177--    --leak-check=full
+--1177--    --show-leak-kinds=all
+--1177--    --track-origins=yes
+--1177--    --verbose
+--1177--    --log-file=valgrind-out.txt
+--1177-- Contents of /proc/version:
+--1177--   Linux version 6.1.37-1-lts (linux-lts@archlinux) (gcc (GCC) 13.1.1 20230429, GNU ld (GNU Binutils) 2.40.0) #1 SMP PREEMPT_DYNAMIC Sat, 01 Jul 2023 17:31:09 +0000
+--1177-- 
+--1177-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--1177-- Page sizes: currently 4096, max supported 4096
+--1177-- Valgrind library directory: /usr/lib/valgrind
+--1177-- Reading syms from /home/nhefner/Code/ncurses-testing/form-test
+==1177== Downloading debug info for /home/nhefner/Code/ncurses-testing/form-test...
+==1177== Server query failed: No such file or directory
+--1177-- Reading syms from /usr/lib/ld-linux-x86-64.so.2
+==1177== Downloading debug info for /usr/lib/ld-linux-x86-64.so.2...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/f72a7ea28ae7a23cd90cdcc5537be1efa37c7b36/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/ld-linux-x86-64.so.2
+--1177-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+==1177== Downloading debug info for /usr/lib/valgrind/memcheck-amd64-linux...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/21561a08446ac6cd0aca1f19ec3cf8193a37e08d/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/valgrind/memcheck-amd64-linux
+--1177--    object doesn't have a dynamic symbol table
+--1177-- Scheduler: using generic scheduler lock implementation.
+--1177-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==1177== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-1177-by-nhefner-on-???
+==1177== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-1177-by-nhefner-on-???
+==1177== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-1177-by-nhefner-on-???
+==1177== 
+==1177== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==1177== don't want to do, unless you know exactly what you're doing,
+==1177== or are doing some strange experiment):
+==1177==   /usr/lib/valgrind/../../bin/vgdb --pid=1177 ...command...
+==1177== 
+==1177== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==1177==   /path/to/gdb ./form-test
+==1177== and then give GDB the following command
+==1177==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=1177
+==1177== --pid is optional if only one valgrind process is running
+==1177== 
+--1177-- REDIR: 0x4023eb0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c1162 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--1177-- REDIR: 0x4022660 (ld-linux-x86-64.so.2:index) redirected to 0x580c117c (vgPlain_amd64_linux_REDIR_FOR_index)
+--1177-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+==1177== Downloading debug info for /usr/lib/valgrind/vgpreload_core-amd64-linux.so...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/e9d74745228fe25e28f506616e6de17acc8c85dc/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--1177-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==1177== Downloading debug info for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/6f13a23e116866d1cbd837b779780ab20a826fd0/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==1177== WARNING: new redirection conflicts with existing -- ignoring it
+--1177--     old: 0x04023eb0 (strlen              ) R-> (0000.0) 0x580c1162 vgPlain_amd64_linux_REDIR_FOR_strlen
+--1177--     new: 0x04023eb0 (strlen              ) R-> (2007.0) 0x04847fe0 strlen
+--1177-- REDIR: 0x4022890 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4849100 (strcmp)
+--1177-- REDIR: 0x4021ab0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x484cef0 (mempcpy)
+--1177-- Reading syms from /usr/lib/libncursesw.so.6.4
+==1177== Downloading debug info for /usr/lib/libncursesw.so.6.4...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/cbf94fa1463fd9702aaeacf74b02793cf6e98cf5/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/libncursesw.so.6.4
+--1177-- Warning: cross-CU LIMITATION: some inlined fn names
+--1177-- might be shown as UnknownInlinedFun
+--1177-- Reading syms from /usr/lib/libformw.so.6.4
+==1177== Downloading debug info for /usr/lib/libformw.so.6.4...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/b8f71d9d551844e93ab48dbbeb1cc9ecedf72672/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/libformw.so.6.4
+--1177-- Reading syms from /usr/lib/libc.so.6
+==1177== Downloading debug info for /usr/lib/libc.so.6...
+--1177--   Considering /home/nhefner/.cache/debuginfod_client/2f005a79cd1a8e385972f5a102f16adba414d75e/debuginfo ..
+--1177--   .. CRC is valid
+==1177== Successfully downloaded debug file for /usr/lib/libc.so.6
+==1177== WARNING: new redirection conflicts with existing -- ignoring it
+--1177--     old: 0x04987460 (memalign            ) R-> (1011.0) 0x04846db0 memalign
+--1177--     new: 0x04987460 (memalign            ) R-> (1017.0) 0x048472e0 aligned_alloc
+==1177== WARNING: new redirection conflicts with existing -- ignoring it
+--1177--     old: 0x04987460 (memalign            ) R-> (1011.0) 0x04846db0 memalign
+--1177--     new: 0x04987460 (memalign            ) R-> (1017.0) 0x04847260 aligned_alloc
+==1177== WARNING: new redirection conflicts with existing -- ignoring it
+--1177--     old: 0x04987460 (memalign            ) R-> (1011.0) 0x04846db0 memalign
+--1177--     new: 0x04987460 (memalign            ) R-> (1017.0) 0x048472e0 aligned_alloc
+==1177== WARNING: new redirection conflicts with existing -- ignoring it
+--1177--     old: 0x04987460 (memalign            ) R-> (1011.0) 0x04846db0 memalign
+--1177--     new: 0x04987460 (memalign            ) R-> (1017.0) 0x04847260 aligned_alloc
+--1177-- REDIR: 0x4024050 (ld-linux-x86-64.so.2:strncmp) redirected to 0x4848930 (strncmp)
+--1177-- REDIR: 0x498d1f0 (libc.so.6:strncasecmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499f440 (libc.so.6:wmemcmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498b670 (libc.so.6:strchrnul) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498a7f0 (libc.so.6:memrchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x4989e60 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499ef50 (libc.so.6:wcslen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x49a07c0 (libc.so.6:wcsnlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d4e0 (libc.so.6:strnlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d570 (libc.so.6:strpbrk) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498b700 (libc.so.6:strcmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498a880 (libc.so.6:memset) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499ed10 (libc.so.6:wcschr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498b5f0 (libc.so.6:index) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d5a0 (libc.so.6:rindex) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499eda0 (libc.so.6:wcscmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498aaa0 (libc.so.6:stpncpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499f3c0 (libc.so.6:wmemchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d390 (libc.so.6:strncmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498ab00 (libc.so.6:strcasecmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498c8a0 (libc.so.6:strcspn) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x499ee30 (libc.so.6:wcscpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498b580 (libc.so.6:strcat) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d290 (libc.so.6:strncasecmp_l) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x4989d70 (libc.so.6:bcmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498c830 (libc.so.6:strcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498aba0 (libc.so.6:strcasecmp_l) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d160 (libc.so.6:strlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d430 (libc.so.6:strncpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498aa30 (libc.so.6:stpcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498a5b0 (libc.so.6:memmove) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+==1177== Preferring higher priority redirection:
+--1177--     old: 0x04a45b00 (__memcpy_avx_unalign) R-> (2018.0) 0x0484a4e0 __memcpy_avx_unaligned_erms
+--1177--     new: 0x04a45b00 (__memcpy_avx_unalign) R-> (2018.1) 0x0484bf80 memmove
+--1177-- REDIR: 0x4989cf0 (libc.so.6:memchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d760 (libc.so.6:strspn) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498a6d0 (libc.so.6:mempcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498a970 (libc.so.6:rawmemchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498d330 (libc.so.6:strncat) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x4a077e0 (libc.so.6:__memcpy_chk) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x498df10 (libc.so.6:strstr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--1177-- REDIR: 0x4a4a6f0 (libc.so.6:__strrchr_avx2) redirected to 0x48479c0 (rindex)
+--1177-- REDIR: 0x4a48840 (libc.so.6:__strlen_avx2) redirected to 0x4847ec0 (strlen)
+--1177-- REDIR: 0x4a49920 (libc.so.6:__strncmp_avx2) redirected to 0x4848750 (strncmp)
+--1177-- REDIR: 0x4986690 (libc.so.6:malloc) redirected to 0x48417d0 (malloc)
+--1177-- REDIR: 0x4a45b00 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x484bf80 (memmove)
+--1177-- REDIR: 0x4987530 (libc.so.6:calloc) redirected to 0x4846900 (calloc)
+--1177-- REDIR: 0x4a47ea0 (libc.so.6:__strchrnul_avx2) redirected to 0x484c9d0 (strchrnul)
+--1177-- REDIR: 0x4a4a420 (libc.so.6:__strnlen_avx2) redirected to 0x4847e60 (strnlen)
+--1177-- REDIR: 0x4a47c60 (libc.so.6:__strchr_avx2) redirected to 0x4847ba0 (index)
+--1177-- REDIR: 0x4986c40 (libc.so.6:free) redirected to 0x48440c0 (free)
+--1177-- REDIR: 0x4a485f0 (libc.so.6:__strcpy_avx2) redirected to 0x4848010 (strcpy)
+--1177-- REDIR: 0x4a48090 (libc.so.6:__strcmp_avx2) redirected to 0x4849000 (strcmp)
+--1177-- REDIR: 0x4a45ad0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x484cff0 (__memcpy_chk)
+--1177-- REDIR: 0x4986e80 (libc.so.6:realloc) redirected to 0x4846b60 (realloc)
+--1177-- REDIR: 0x4a46500 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x484be70 (memset)
+--1177-- REDIR: 0x4a49f80 (libc.so.6:__strncpy_avx2) redirected to 0x4848190 (strncpy)
+--1177-- REDIR: 0x4a453a0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x484b6a0 (bcmp)
+--1177-- REDIR: 0x499e250 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x484d100 (strstr)
+==1177== 
+==1177== HEAP SUMMARY:
+==1177==     in use at exit: 565,641 bytes in 435 blocks
+==1177==   total heap usage: 468 allocs, 33 frees, 577,778 bytes allocated
+==1177== 
+==1177== Searching for pointers to 435 not-freed blocks
+==1177== Checked 1,009,912 bytes
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 1 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:404)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD4E: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 2 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:405)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD88: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 3 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:406)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDC2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 4 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:425)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DF64: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 5 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:426)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DFB2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are still reachable in loss record 6 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:427)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E000: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 9 bytes in 1 blocks are possibly lost in loss record 7 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:403)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD14: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 11 bytes in 1 blocks are still reachable in loss record 8 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:407)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDF9: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 11 bytes in 1 blocks are still reachable in loss record 9 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:408)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DE33: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 12 bytes in 1 blocks are still reachable in loss record 10 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48ACE74: _nc_setupterm (lib_setup.c:818)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 14 bytes in 1 blocks are still reachable in loss record 11 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A0319: update_getenv (db_iterator.c:131)
+==1177==    by 0x48A3A11: UnknownInlinedFun (db_iterator.c:158)
+==1177==    by 0x48A3A11: UnknownInlinedFun (db_iterator.c:331)
+==1177==    by 0x48A3A11: _nc_first_db (db_iterator.c:285)
+==1177==    by 0x48B5F11: _nc_read_entry2 (read_entry.c:874)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 17 bytes in 1 blocks are still reachable in loss record 12 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:402)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DCDA: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 17 bytes in 1 blocks are still reachable in loss record 13 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4889E5A: UnknownInlinedFun (lib_mvcur.c:281)
+==1177==    by 0x4889E5A: _nc_mvcur_resume_sp (lib_mvcur.c:308)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:458)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E1C6: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 20 bytes in 1 blocks are still reachable in loss record 14 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:428)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E053: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 15 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A0319: update_getenv (db_iterator.c:131)
+==1177==    by 0x48A39E9: UnknownInlinedFun (db_iterator.c:158)
+==1177==    by 0x48A39E9: UnknownInlinedFun (db_iterator.c:329)
+==1177==    by 0x48A39E9: _nc_first_db (db_iterator.c:285)
+==1177==    by 0x48B5F11: _nc_read_entry2 (read_entry.c:874)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 16 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F39DA: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:402)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DCDA: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 17 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:404)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD4E: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 18 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:405)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD88: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 19 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:406)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDC2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 20 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:407)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDF9: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 21 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:408)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DE33: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 22 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:425)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DF64: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 23 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:426)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DFB2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 24 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:427)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E000: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 25 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:428)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E053: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 26 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4889E5A: UnknownInlinedFun (lib_mvcur.c:281)
+==1177==    by 0x4889E5A: _nc_mvcur_resume_sp (lib_mvcur.c:308)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:458)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E1C6: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 27 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A1567: _nc_add_to_try (add_tries.c:91)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:80)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:68)
+==1177==    by 0x48AC10B: _nc_keypad (lib_options.c:369)
+==1177==    by 0x109282: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are still reachable in loss record 28 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4892D63: vid_puts_sp (lib_vid_attr.c:195)
+==1177==    by 0x4897969: EmitRange (tty_update.c:642)
+==1177==    by 0x4899676: UnknownInlinedFun (tty_update.c:716)
+==1177==    by 0x4899676: PutRange (tty_update.c:685)
+==1177==    by 0x489A73E: TransformLine (tty_update.c:1589)
+==1177==    by 0x489BC8C: UnknownInlinedFun (tty_update.c:1147)
+==1177==    by 0x489BC8C: doupdate_sp (tty_update.c:998)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x10934B: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 24 bytes in 1 blocks are possibly lost in loss record 29 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x49F3966: tsearch (tsearch.c:337)
+==1177==    by 0x48A6373: tparm_setup.lto_priv.0 (lib_tparm.c:658)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:403)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD14: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 26 bytes in 1 blocks are still reachable in loss record 30 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A3407: _nc_home_terminfo (home_terminfo.c:59)
+==1177==    by 0x48A39FB: UnknownInlinedFun (db_iterator.c:330)
+==1177==    by 0x48A39FB: _nc_first_db (db_iterator.c:285)
+==1177==    by 0x48B5F11: _nc_read_entry2 (read_entry.c:874)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 28 bytes in 1 blocks are still reachable in loss record 31 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x488D46B: UnknownInlinedFun (lib_set_term.c:360)
+==1177==    by 0x488D46B: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 40 bytes in 1 blocks are still reachable in loss record 32 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A361C: UnknownInlinedFun (db_iterator.c:367)
+==1177==    by 0x48A361C: _nc_first_db (db_iterator.c:285)
+==1177==    by 0x48B5F11: _nc_read_entry2 (read_entry.c:874)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 47 bytes in 1 blocks are still reachable in loss record 33 of 85
+==1177==    at 0x4846BE0: realloc (vg_replace_malloc.c:1649)
+==1177==    by 0x48A242C: _nc_doalloc (doalloc.c:54)
+==1177==    by 0x48B459E: _nc_read_termtype (read_entry.c:422)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 47 bytes in 1 blocks are still reachable in loss record 34 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A1A5E: copy_termtype (alloc_ttype.c:542)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 70 bytes in 1 blocks are still reachable in loss record 35 of 85
+==1177==    at 0x4846BE0: realloc (vg_replace_malloc.c:1649)
+==1177==    by 0x48A242C: _nc_doalloc (doalloc.c:54)
+==1177==    by 0x48B06B4: UnknownInlinedFun (lib_tparm.c:817)
+==1177==    by 0x48B06B4: _nc_tiparm (lib_tparm.c:1384)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:402)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DCDA: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 78 bytes in 1 blocks are still reachable in loss record 36 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A1B8E: copy_termtype (alloc_ttype.c:583)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 82 bytes in 1 blocks are still reachable in loss record 37 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x498C8EE: strdup (strdup.c:42)
+==1177==    by 0x48A6357: tparm_setup.lto_priv.0 (lib_tparm.c:657)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4892D63: vid_puts_sp (lib_vid_attr.c:195)
+==1177==    by 0x4897969: EmitRange (tty_update.c:642)
+==1177==    by 0x4899676: UnknownInlinedFun (tty_update.c:716)
+==1177==    by 0x4899676: PutRange (tty_update.c:685)
+==1177==    by 0x489A73E: TransformLine (tty_update.c:1589)
+==1177==    by 0x489BC8C: UnknownInlinedFun (tty_update.c:1147)
+==1177==    by 0x489BC8C: doupdate_sp (tty_update.c:998)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x10934B: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 96 bytes in 1 blocks are still reachable in loss record 38 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A3582: UnknownInlinedFun (db_iterator.c:352)
+==1177==    by 0x48A3582: _nc_first_db (db_iterator.c:285)
+==1177==    by 0x48B5F11: _nc_read_entry2 (read_entry.c:874)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 122 bytes in 1 blocks are still reachable in loss record 39 of 85
+==1177==    at 0x4846BE0: realloc (vg_replace_malloc.c:1649)
+==1177==    by 0x48A242C: _nc_doalloc (doalloc.c:54)
+==1177==    by 0x48A5ED4: _nc_tparm_analyze (lib_tparm.c:481)
+==1177==    by 0x48A6263: tparm_setup.lto_priv.0 (lib_tparm.c:635)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4892D63: vid_puts_sp (lib_vid_attr.c:195)
+==1177==    by 0x4897969: EmitRange (tty_update.c:642)
+==1177==    by 0x4899676: UnknownInlinedFun (tty_update.c:716)
+==1177==    by 0x4899676: PutRange (tty_update.c:685)
+==1177==    by 0x489A73E: TransformLine (tty_update.c:1589)
+==1177==    by 0x489BC8C: UnknownInlinedFun (tty_update.c:1147)
+==1177==    by 0x489BC8C: doupdate_sp (tty_update.c:998)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x10934B: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 128 bytes in 1 blocks are still reachable in loss record 40 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x488D437: UnknownInlinedFun (lib_set_term.c:351)
+==1177==    by 0x488D437: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 156 bytes in 1 blocks are still reachable in loss record 41 of 85
+==1177==    at 0x4846BE0: realloc (vg_replace_malloc.c:1649)
+==1177==    by 0x48A242C: _nc_doalloc (doalloc.c:54)
+==1177==    by 0x48B45BD: _nc_read_termtype (read_entry.c:423)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 156 bytes in 1 blocks are still reachable in loss record 42 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x489BDF2: UnknownInlinedFun (hardscroll.c:204)
+==1177==    by 0x489BDF2: doupdate_sp (tty_update.c:1010)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x109396: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 43 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:402)
+==1177==    by 0x488DCDA: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DCDA: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 44 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:404)
+==1177==    by 0x488DD4E: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD4E: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 45 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:405)
+==1177==    by 0x488DD88: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD88: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 46 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:406)
+==1177==    by 0x488DDC2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDC2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 47 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:407)
+==1177==    by 0x488DDF9: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DDF9: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 48 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:408)
+==1177==    by 0x488DE33: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DE33: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 49 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:425)
+==1177==    by 0x488DF64: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DF64: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 50 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:426)
+==1177==    by 0x488DFB2: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DFB2: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 51 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:427)
+==1177==    by 0x488E000: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E000: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 52 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:428)
+==1177==    by 0x488E053: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E053: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 53 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4889E5A: UnknownInlinedFun (lib_mvcur.c:281)
+==1177==    by 0x4889E5A: _nc_mvcur_resume_sp (lib_mvcur.c:308)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:458)
+==1177==    by 0x488E1C6: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488E1C6: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are still reachable in loss record 54 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x4892D63: vid_puts_sp (lib_vid_attr.c:195)
+==1177==    by 0x4897969: EmitRange (tty_update.c:642)
+==1177==    by 0x4899676: UnknownInlinedFun (tty_update.c:716)
+==1177==    by 0x4899676: PutRange (tty_update.c:685)
+==1177==    by 0x489A73E: TransformLine (tty_update.c:1589)
+==1177==    by 0x489BC8C: UnknownInlinedFun (tty_update.c:1147)
+==1177==    by 0x489BC8C: doupdate_sp (tty_update.c:998)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x10934B: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 168 bytes in 1 blocks are possibly lost in loss record 55 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A62CF: tparm_setup.lto_priv.0 (lib_tparm.c:655)
+==1177==    by 0x48AFEDC: _nc_tiparm (lib_tparm.c:1331)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:403)
+==1177==    by 0x488DD14: UnknownInlinedFun (lib_mvcur.c:465)
+==1177==    by 0x488DD14: newterm_sp (lib_newterm.c:343)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 296 bytes in 1 blocks are still reachable in loss record 56 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F28: _nc_makenew_sp (lib_newwin.c:287)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D829: UnknownInlinedFun (lib_set_term.c:664)
+==1177==    by 0x488D829: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 296 bytes in 1 blocks are still reachable in loss record 57 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F28: _nc_makenew_sp (lib_newwin.c:287)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D84D: UnknownInlinedFun (lib_set_term.c:670)
+==1177==    by 0x488D84D: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 296 bytes in 1 blocks are still reachable in loss record 58 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F28: _nc_makenew_sp (lib_newwin.c:287)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D9D2: UnknownInlinedFun (lib_set_term.c:756)
+==1177==    by 0x488D9D2: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 312 bytes in 1 blocks are still reachable in loss record 59 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x489C3CA: UnknownInlinedFun (hashmap.c:316)
+==1177==    by 0x489C3CA: UnknownInlinedFun (hardscroll.c:213)
+==1177==    by 0x489C3CA: doupdate_sp (tty_update.c:1010)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x109396: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 312 bytes in 1 blocks are still reachable in loss record 60 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x489C057: UnknownInlinedFun (hashmap.c:319)
+==1177==    by 0x489C057: UnknownInlinedFun (hardscroll.c:213)
+==1177==    by 0x489C057: doupdate_sp (tty_update.c:1010)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x109396: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 504 bytes in 21 blocks are still reachable in loss record 61 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A1492: _nc_add_to_try (add_tries.c:104)
+==1177==    by 0x48AC214: UnknownInlinedFun (init_keytry.c:101)
+==1177==    by 0x48AC214: UnknownInlinedFun (init_keytry.c:68)
+==1177==    by 0x48AC214: _nc_keypad (lib_options.c:369)
+==1177==    by 0x109282: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 512 bytes in 1 blocks are still reachable in loss record 62 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x488D414: UnknownInlinedFun (lib_set_term.c:348)
+==1177==    by 0x488D414: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 528 bytes in 1 blocks are still reachable in loss record 63 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48B48CD: _nc_read_termtype (read_entry.c:515)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 528 bytes in 1 blocks are still reachable in loss record 64 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A1CDF: copy_termtype (alloc_ttype.c:625)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 624 bytes in 1 blocks are still reachable in loss record 65 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F47: _nc_makenew_sp (lib_newwin.c:292)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D829: UnknownInlinedFun (lib_set_term.c:664)
+==1177==    by 0x488D829: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 624 bytes in 1 blocks are still reachable in loss record 66 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F47: _nc_makenew_sp (lib_newwin.c:292)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D84D: UnknownInlinedFun (lib_set_term.c:670)
+==1177==    by 0x488D84D: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 624 bytes in 1 blocks are still reachable in loss record 67 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x4887F47: _nc_makenew_sp (lib_newwin.c:292)
+==1177==    by 0x48885B1: newwin_sp (lib_newwin.c:161)
+==1177==    by 0x488D9D2: UnknownInlinedFun (lib_set_term.c:756)
+==1177==    by 0x488D9D2: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 760 bytes in 1 blocks are still reachable in loss record 68 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48ACDB8: _nc_setupterm (lib_setup.c:739)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 854 bytes in 1 blocks are still reachable in loss record 69 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48B47A6: _nc_read_termtype (read_entry.c:469)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 855 bytes in 1 blocks are still reachable in loss record 70 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A1E7B: copy_termtype (alloc_ttype.c:657)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,320 bytes in 55 blocks are still reachable in loss record 71 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A150F: _nc_add_to_try (add_tries.c:79)
+==1177==    by 0x48AC214: UnknownInlinedFun (init_keytry.c:101)
+==1177==    by 0x48AC214: UnknownInlinedFun (init_keytry.c:68)
+==1177==    by 0x48AC214: _nc_keypad (lib_options.c:369)
+==1177==    by 0x109282: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,480 bytes in 1 blocks are still reachable in loss record 72 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48B3E8B: _nc_read_termtype (read_entry.c:336)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,560 bytes in 1 blocks are still reachable in loss record 73 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A4D5F: UnknownInlinedFun (lib_setup.c:944)
+==1177==    by 0x48A4D5F: new_prescr (lib_setup.c:935)
+==1177==    by 0x488EBCB: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,848 bytes in 77 blocks are still reachable in loss record 74 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A1492: _nc_add_to_try (add_tries.c:104)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:80)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:68)
+==1177==    by 0x48AC10B: _nc_keypad (lib_options.c:369)
+==1177==    by 0x109282: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,920 bytes in 1 blocks are still reachable in loss record 75 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x489BE48: UnknownInlinedFun (hashmap.c:295)
+==1177==    by 0x489BE48: UnknownInlinedFun (hardscroll.c:213)
+==1177==    by 0x489BE48: doupdate_sp (tty_update.c:1010)
+==1177==    by 0x488EDCA: wrefresh (lib_refresh.c:66)
+==1177==    by 0x109396: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 1,965 bytes in 1 blocks are still reachable in loss record 76 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A1C71: copy_termtype (alloc_ttype.c:575)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 2,088 bytes in 87 blocks are still reachable in loss record 77 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48A150F: _nc_add_to_try (add_tries.c:79)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:80)
+==1177==    by 0x48AC10B: UnknownInlinedFun (init_keytry.c:68)
+==1177==    by 0x48AC10B: _nc_keypad (lib_options.c:369)
+==1177==    by 0x109282: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 3,584 bytes in 1 blocks are still reachable in loss record 78 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x488E558: UnknownInlinedFun (lib_wacs.c:122)
+==1177==    by 0x488E558: UnknownInlinedFun (lib_set_term.c:642)
+==1177==    by 0x488E558: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 3,816 bytes in 1 blocks are still reachable in loss record 79 of 85
+==1177==    at 0x4846BE0: realloc (vg_replace_malloc.c:1649)
+==1177==    by 0x48A242C: _nc_doalloc (doalloc.c:54)
+==1177==    by 0x48B45DC: _nc_read_termtype (read_entry.c:424)
+==1177==    by 0x48BB01B: _nc_read_file_entry (read_entry.c:579)
+==1177==    by 0x48BD5F8: _nc_read_tic_entry.constprop.0 (read_entry.c:833)
+==1177==    by 0x48B5F37: _nc_read_entry2 (read_entry.c:877)
+==1177==    by 0x48ACC72: _nc_setup_tinfo (lib_setup.c:496)
+==1177==    by 0x48ACE0F: _nc_setupterm (lib_setup.c:779)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 3,816 bytes in 1 blocks are still reachable in loss record 80 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x48A1A80: copy_termtype (alloc_ttype.c:543)
+==1177==    by 0x48ACE41: _nc_setupterm (lib_setup.c:811)
+==1177==    by 0x488D3C4: newterm_sp (lib_newterm.c:212)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 6,202 bytes in 1 blocks are still reachable in loss record 81 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x488EADE: _nc_printf_string_sp (safe_sprintf.c:260)
+==1177==    by 0x488F344: vw_printw (lib_printw.c:162)
+==1177==    by 0x488F5B7: mvprintw (lib_printw.c:104)
+==1177==    by 0x109369: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 6,724 bytes in 1 blocks are still reachable in loss record 82 of 85
+==1177==    at 0x4841848: malloc (vg_replace_malloc.c:431)
+==1177==    by 0x488D51D: UnknownInlinedFun (lib_set_term.c:445)
+==1177==    by 0x488D51D: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 172,536 bytes in 39 blocks are still reachable in loss record 83 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48885F1: newwin_sp (lib_newwin.c:167)
+==1177==    by 0x488D829: UnknownInlinedFun (lib_set_term.c:664)
+==1177==    by 0x488D829: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 172,536 bytes in 39 blocks are still reachable in loss record 84 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48885F1: newwin_sp (lib_newwin.c:167)
+==1177==    by 0x488D84D: UnknownInlinedFun (lib_set_term.c:670)
+==1177==    by 0x488D84D: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== 172,536 bytes in 39 blocks are still reachable in loss record 85 of 85
+==1177==    at 0x48469B3: calloc (vg_replace_malloc.c:1554)
+==1177==    by 0x48885F1: newwin_sp (lib_newwin.c:167)
+==1177==    by 0x488D9D2: UnknownInlinedFun (lib_set_term.c:756)
+==1177==    by 0x488D9D2: newterm_sp (lib_newterm.c:234)
+==1177==    by 0x488EBDD: newterm (lib_newterm.c:369)
+==1177==    by 0x4886D72: initscr (lib_initscr.c:93)
+==1177==    by 0x109264: main (in /home/nhefner/Code/ncurses-testing/form-test)
+==1177== 
+==1177== LEAK SUMMARY:
+==1177==    definitely lost: 0 bytes in 0 blocks
+==1177==    indirectly lost: 0 bytes in 0 blocks
+==1177==      possibly lost: 201 bytes in 3 blocks
+==1177==    still reachable: 565,440 bytes in 432 blocks
+==1177==         suppressed: 0 bytes in 0 blocks
+==1177== 
+==1177== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

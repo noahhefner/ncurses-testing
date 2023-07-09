@@ -14,6 +14,7 @@ struct login_box {
 
   // Form for username and password
   FORM* form;
+  FIELD* field[2];
 
   // Coordinates for labels and form fields
   struct xy* coords_label_login;
@@ -26,6 +27,7 @@ struct login_box {
 
 void init_login_box (int x, int y, int width, int height);
 void draw_login_box ();
+void free_login_box ();
 
 extern struct login_box lb;
 

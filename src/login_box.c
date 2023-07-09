@@ -43,9 +43,6 @@ void init_login_box (int x, int y, int width, int height) {
   lb.coords_label_username = &coords_label_user;
   lb.coords_label_password = &coords_label_pass;
 
-  // Field
-  FIELD* fields[2];
-
   // Calculate coordinates for fields
   int field_creds_x, field_user_y, field_pass_y;
   field_creds_x = lb.x + (lb.width / 2) + 8;
@@ -53,18 +50,18 @@ void init_login_box (int x, int y, int width, int height) {
   field_pass_y = y_login + 4;
 
   // Username field
-  fields[0] = new_field(1, 20, field_user_y, field_creds_x, 0, 0);
+  lb.field[0] = new_field(1, 20, field_user_y, field_creds_x, 0, 0);
   // Password field
-  fields[1] = new_field(1, 20, field_pass_y, field_creds_x, 0, 0);
+  lb.field[1] = new_field(1, 20, field_pass_y, field_creds_x, 0, 0);
 
   // Set field options
-  set_field_back(fields[0], A_UNDERLINE);
-  field_opts_off(fields[0], O_AUTOSKIP);
-  set_field_back(fields[1], A_UNDERLINE);
-  field_opts_off(fields[1], O_AUTOSKIP);
+  set_field_back(lb.field[0], A_UNDERLINE);
+  field_opts_off(lb.field[0], O_AUTOSKIP);
+  set_field_back(lb.field[1], A_UNDERLINE);
+  field_opts_off(lb.field[1], O_AUTOSKIP);
 
   // Set form in login box struct
-  lb.form = new_form(fields);
+  lb.form = new_form(lb.field);
 
 }
 
@@ -73,19 +70,20 @@ void draw_login_box () {
   // Draw rectangle around perimeter of login box
   draw_rectangle(lb.y, lb.x, lb.width, lb.height);
 
-  // Calculate coordinates for labels
-  int y_login, y_user, y_pass, x_login, x_creds;
-  y_login = lb.y + (lb.height / 2) - 3;
-  y_user = y_login + 2;
-  y_pass = y_login + 4;
-  x_login = lb.x + (lb.width / 2) - (strlen(txt_login) / 2);
-  x_creds = lb.x + (lb.width / 2) - 8;
-
   // Add labels
-  mvaddstr(y_login, x_login, txt_login);
-  mvaddstr(y_user, x_creds, txt_user);
-  mvaddstr(y_pass, x_creds, txt_pass);
+  mvaddstr(lb.coords_label_login->y, lb.coords_label_login->x, txt_login);
+  mvaddstr(lb.coords_label_username->y, lb.coords_label_username->x, txt_user);
+  mvaddstr(lb.coords_label_password->y, lb.coords_label_password->x, txt_pass);
 
   post_form(lb.form);
+
+}
+
+void free_login_box () {
+
+  unpost_form(lb.form);
+  free_form(lb.form);
+  free_field(lb.field[0]);
+  free_field(lb.field[1]);
 
 }
